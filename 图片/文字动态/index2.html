@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: 40px auto;
+            width: 980px;
+            height: 224px;
+        }
+
+        .top {
+            position: relative;
+            float: left;
+            width: 324px;
+            height: 224px;
+            overflow: hidden;
+        }
+
+        span {
+            position: absolute;
+            left: 0;
+            bottom: -40px;
+            display: block;
+            width: 100%;
+            height: 40px;
+            background-color: #333;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+        }
+
+        .top:nth-child(2) {
+            margin: 0 4px;
+        }
+
+        span img {
+            display: block;
+            width: 90px;
+            height: 22px;
+            margin: 9px auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .con {
+            position: relative;
+            float: left;
+            width: 160px;
+            height: 120px;
+            overflow: hidden;
+            margin-right: 4px;
+            margin-top: 10px;
+        }
+
+        .con:last-child {
+            margin-right: 0;
+        }
+
+        .top:hover span,
+        .con:hover span {
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <img src="./images/pic1.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="top">
+            <img src="./images/pic2.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="top">
+            <img src="./images/pic3.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic4.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic5.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic6.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic7.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic8.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+        <div class="con">
+            <img src="./images/pic9.jpg" alt="">
+            <span><img src="./images/button.png" alt=""></span>
+        </div>
+    </div>
+</body>
+
+</html>

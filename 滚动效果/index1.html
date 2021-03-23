@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery.min.js"></script>
+    <script src="./animate.js"></script>
+    <title>滚动顶部</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        span {
+            display: none;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: pink;
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <span>top</span>
+    <script>
+        $(document).ready(function () {
+            $(document).scroll(function () {
+                var top = $(this).scrollTop();
+                if (top >= 1600) {
+                    $("span").css("display", "block");
+                } else {
+                    $("Span").css("display", "none");
+                }
+                $("span").click(function () {
+                    animate(window, 0);
+                })
+
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 1000px;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .login {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            z-index: 3;
+            display: none;
+            transform: translate(50%, 50%);
+            margin-left: 300px;
+        }
+
+        .layer {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1000px;
+            background-color: #ccc;
+            z-index: 2;
+            opacity: 0.5;
+            display: none;
+        }
+
+        i {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        p {
+            width: 100%;
+            height: 40px;
+            padding: 10px 0;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            cursor: move;
+            user-select: none;
+        }
+
+        label {
+            display: block;
+            text-indent: 30px;
+            padding: 10px 0;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        input {
+            width: 240px;
+            height: 30px;
+            margin-left: 30px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input[type=submit] {
+            height: 36px;
+            line-height: 36px;
+            margin: 20px 30px 10px;
+            background-color: #000;
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 10px;
+        }
+
+        span {
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #cccc;
+        }
+
+        .bg {
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击显示弹窗</button>
+    <div class="login">
+        <i><img src="./images/close.jpg" alt=""></i>
+        <p>登录</p>
+        <label>邮箱：</label>
+        <input type="text">
+        <label>密码：</label>
+        <input type="password">
+        <input type="submit" value="登录">
+        <span>忘记密码 创建账号</span>
+        <img src="./images/bg.jpg" alt="" class="bg">
+    </div>
+    <div class="layer"></div>
+</body>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $(".login").show();
+            $(".layer").show();
+            $("p").mousedown(function () {
+                $(document).mousemove(function (e) {
+                    var x = e.pageX - $("p").width() / 2 - 450 + 'px';
+                    var y = e.pageY - $("p").height() / 2 - 200 + 'px';
+                    $(".login").css("left", x);
+                    $(".login").css("top", y);
+                })
+                $(document).mouseup(function () {
+                    $(this).off("mousemove")
+                })
+            })
+        })
+        $("i").click(function () {
+            $(".login").hide();
+            $(".layer").hide();
+        })
+    });
+</script>
+
+</html>

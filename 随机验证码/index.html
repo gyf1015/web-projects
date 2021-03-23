@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        div {
+            width: 500px;
+            margin: 30px;
+        }
+
+        input {
+            float: left;
+            width: 200px;
+            height: 16px;
+            padding: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            color: #999;
+            outline: none;
+            text-indent: 10px;
+        }
+
+        a {
+            float: left;
+            width: 85px;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 10px;
+            padding: 0 10px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #aaa;
+            text-decoration: none;
+            letter-spacing: 10px;
+            /* 
+            中文字符间距是letter
+            英文字符间距是word */
+        }
+
+        button {
+            float: left;
+            width: 60px;
+            height: 30px;
+            background-color: #499990;
+            color: #fff;
+            outline: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="请输入验证码">
+        <a href="javascript:;">abcd</a>
+        <button>验证</button>
+    </div>
+    <script>
+        // 随机生成验证码
+        create();
+        function create() {
+            var code = '';
+            var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            for (var i = 0; i < 4; i++) {
+                var index = Math.floor(Math.random() * 36);
+                code += arr[index];
+            }
+            $("a").html(code);
+        }
+        $("a").click(function () {
+            create();
+        })
+        // 验证
+        $("button").click(function () {
+            var ipt = $("input").val().toUpperCase();
+            var code = $("a").html();
+            if (ipt == "") {
+                alert("请重新输入");
+            } else if (ipt == code) {
+                // window.location.href = "https://www.baidu.com";
+                alert("验证成功");
+                window.location.reload();
+            } else {
+                alert("验证码错误");
+                $("input").val("");
+                window.location.reload();
+            }
+        })
+    </script>
+</body>
+
+</html>

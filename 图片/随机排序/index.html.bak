@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            color: white;
+            font-size: 18px;
+            background-color: pink;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        div {
+            width: 800px;
+            margin: 50px auto;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 50px;
+        }
+
+        ul li {
+            float: left;
+            width: 240px;
+            height: 220px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        li span {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button class="btn1">随机排列</button>
+        <button class="btn2">顺序排列</button>
+        <ul>
+            <li>
+                <img src="../images/pic4.jpg" alt="">
+                <span>图片1</span>
+            </li>
+            <li>
+                <img src="../images/pic5.jpg" alt="">
+                <span>图片2</span>
+            </li>
+            <li>
+                <img src="../images/pic6.jpg" alt="">
+                <span>图片3</span>
+            </li>
+            <li>
+                <img src="../images/pic7.jpg" alt="">
+                <span>图片4</span>
+            </li>
+            <li>
+                <img src="../images/pic8.jpg" alt="">
+                <span>图片5</span>
+            </li>
+            <li>
+                <img src="../images/pic9.jpg" alt="">
+                <span>图片6</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        var arr = [];
+        var arr1 = [];
+        var arr2 = [];
+        $("ul li").each(function (index, element) {
+            arr.push($(this).children("img").attr("src"));
+            arr1.push($(this).children("span").html());
+            arr2.push(index);
+        });
+        var flag = true;
+        $(".btn2").click(function (a, b) {
+            if (flag) {
+                arr2.sort(function (a, b) {
+                    return a - b;
+                })
+            } else {
+                arr2.sort(function (a, b) {
+                    return b - a;
+                })
+            }
+            change();
+        })
+        $(".btn1").click(function () {
+            arr2.sort(function (a, b) {
+                return Math.random() - 0.5
+            });
+            change();
+        })
+
+        function change() {
+            for (var i = 0; i < $("ul li").length; i++) {
+                $("ul li").eq(i).children("img").attr("src", arr[arr2[i]]);
+                $("ul li").eq(i).children("span").html(arr1[arr2[i]]);
+            }
+        }
+    });
+</script>
+
+</html>

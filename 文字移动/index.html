@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 800px;
+            height: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 5px solid #ccc;
+        }
+
+        #text {
+            float: left;
+            width: 300px;
+            height: 100%;
+            resize: none;
+            background-color: pink;
+            font-size: 20px;
+            line-height: 30px;
+            color: #fff;
+        }
+
+        .id {
+            float: left;
+            width: 120px;
+            margin: 0 30px;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #ccc;
+            cursor: pointer;
+            border: 0;
+            outline: none;
+        }
+
+        strong {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 30px 15px;
+            display: none;
+        }
+
+        ul li {
+            float: left;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+            background-color: #fc6;
+        }
+
+        .content {
+            float: right;
+            width: 300px;
+            height: 100%;
+            border: 1px dashed #000;
+            background-color: skyblue;
+            font-size: 20px;
+            line-height: 30px;
+            color: #333;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+        <div class="id">
+            <button>文字右移</button>
+            <strong>0/0</strong>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="content"></div>
+    </div>
+    <script>
+        var ul = document.querySelector("ul");
+        var li = document.querySelectorAll("li");
+        var text = document.querySelector("#text");
+        var con = document.querySelector(".content");
+        var btn = document.querySelector("button");
+        var strong = document.querySelector("strong");
+
+        btn.addEventListener("click", function () {
+            con.innerHTML = "";
+            strong.innerHTML = "0/0";
+            if (text.value == "") {
+                alert("请输入文字");
+                return;
+            }
+            // 清空内容
+            ul.style.display = "block";
+
+            // 进度条
+            var num = 0;
+            function roll() {
+                $("li").eq(num).css("backgroundColor", "#f30");
+                num++;
+                if (num == li.length) {
+                    num = 0;
+                }
+            }
+            timer1 = setInterval(roll, 50);
+
+            // 文字移动
+            timer = setInterval(move, 50);
+            var sum = text.value.length;
+            function move() {
+                strong.innerHTML = con.innerHTML.length + "/" + sum;
+                if (text.value == "") {
+                    clearInterval(timer);
+                    ul.style.display = "none";
+                    return;
+                }
+                var str = text.value;
+                // 将文本内容转换成数组
+                var arr = str.split("");
+                // 删除并返回数组的第一个元素
+                con.innerHTML += arr.shift();
+                // 将数组的元素拼接成字符串
+                text.value = arr.join("");
+                // 删除数组的第一个元素
+                arr.shift();
+
+                if (con.innerHTML.length == sum) {
+                    clearInterval(timer1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

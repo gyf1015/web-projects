@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        ul {
+            height: 30px;
+            list-style: none;
+            background-color: #000;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cur {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .content div {
+            display: none;
+            height: 200px;
+            line-height: 160px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+            background-color: #f2f2f2;
+        }
+
+        .content .curr {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li class="cur">新闻</li>
+            <li>音乐</li>
+            <li>视频</li>
+        </ul>
+        <div class="content">
+            <div class="curr">新闻内容</div>
+            <div>音乐内容</div>
+            <div>视频内容</div>
+        </div>
+    </div>
+    <script>
+        $("ul li").each(function (index, element) {
+            $(element).attr("index", index);
+        });
+        $("ul li").click(function () {
+            $(this).addClass("cur").siblings().removeClass("cur");
+            var num = $(this).attr("index");
+            $(".content div").eq(num).show().siblings().hide();
+        })
+
+
+    </script>
+</body>
+
+</html>

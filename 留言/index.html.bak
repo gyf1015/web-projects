@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 360px;
+            min-height: 500px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f6f6f6;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        input {
+            width: 200px;
+            height: 20px;
+            outline: none;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            height: 26px;
+            margin-left: 5px;
+        }
+
+        ul {
+            margin-top: 30px;
+            display: none;
+        }
+
+        ul li {
+            width: 100%;
+            list-style: none;
+            background-color: #ccc;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-indent: 10px;
+            word-break: break-all;
+        }
+
+        .active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text">
+        <button class="msg">留言</button>
+        <button class="del">批量删除</button>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        $(".msg").click(function () {
+            var text = $("input").val();
+            if (text == "") {
+                alert("请重新输入");
+                return;
+            }
+            $("ul").show().append("<li>" + text + "</li>");
+            $("ul li").dblclick(function () {
+                $(this).removeClass("active");
+            });
+            $("ul li").click(function () {
+                $(this).addClass("active");
+            });
+            $(".del").click(function () {
+                $(".active").remove();
+                if ($("ul li.active").length == 0) {
+                    $("ul").hide();
+                }
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

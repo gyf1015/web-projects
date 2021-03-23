@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #666;
+        }
+
+        div {
+            width: 250px;
+            height: 38px;
+            margin: 50px auto;
+        }
+
+        img {
+            width: 25px;
+            height: 36px;
+            margin: 0 2px;
+        }
+
+        span {
+            font-size: 50px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./images/0.png" alt="">
+        <img src="./images/0.png" alt="">
+        <span>:</span>
+        <img src="./images/0.png" alt="">
+        <img src="./images/0.png" alt="">
+        <span>:</span>
+        <img src="./images/0.png" alt="">
+        <img src="./images/0.png" alt="">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("img").each(function (index, element) {
+                change(index, "img");
+                var timer = setInterval(function () {
+                    change(index, "img");
+                }, 1000)
+            });
+
+            function math(num) {
+                return num < 10 ? "0" + num : num + "";
+            }
+            function change(index, obj) {
+                var time = new Date();
+                var nowTime = math(time.getHours()) + math(time.getMinutes()) + math(time.getSeconds());
+                var src = "./images/" + nowTime.charAt(index) + ".png";
+                $(obj).eq(index).attr("src", src);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .box {
+            width: 230px;
+            background-color: #333;
+            border: 1px solid #000;
+            box-shadow: 1px 1px 1px #666;
+            margin-left: 40px;
+        }
+
+        .title {
+            height: 70px;
+            font-size: 26px;
+            color: #fff;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .nav li {
+            line-height: 50px;
+            font-weight: bold;
+            color: #fff;
+            border-top: 1px solid #000;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .nav li img {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-left: 60px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .active {
+            background-color: pink;
+        }
+
+        .con {
+            display: none;
+        }
+
+        .con li {
+            height: 40px;
+            line-height: 40px;
+            font-size: 15px;
+            color: #fff;
+            background-color: #666;
+        }
+
+        .con li img {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-left: 80px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .con li:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="title">
+            <h2>目录</h2>
+        </div>
+        <ul class="nav">
+            <li>
+                <img src="./images/css.png" alt="">网站
+                <ul class="con">
+                    <li><img src="./images/css.png" alt="">百度</li>
+                    <li><img src="./images/css.png" alt="">淘宝</li>
+                    <li><img src="./images/css.png" alt="">优酷</li>
+                    <li><img src="./images/css.png" alt="">腾讯</li>
+                    <li><img src="./images/css.png" alt="">京东</li>
+                </ul>
+            </li>
+            <li>
+                <img src="./images/folder.png" alt="">网站1
+                <ul class="con">
+                    <li>
+                        <img src="./images/tm_add.png" alt=""> 百度1
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="./images/header.png" alt="">网站2
+                <ul class="con">
+                    <li><img src="./images/tm_edit.png" alt="">百度</li>
+                    <li><img src="./images/text_block.png" alt="">淘宝</li>
+                </ul>
+            </li>
+            <li>
+                <img src="./images/pen.png" alt="">网站3
+                <ul class="con">
+                    <li><img src="./images/css.png" alt="">百度</li>
+                    <li><img src="./images/setting.png" alt="">淘宝</li>
+                    <li><img src="./images/tm_add.png" alt="">优酷</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".nav").children("li").click(function () {
+            $(this).toggleClass("active");
+            $(this).siblings("li").removeClass("active").find(".con").slideUp("quickly");
+            $(this).find(".con").slideToggle();
+        })
+    });
+</script>
+
+</html>

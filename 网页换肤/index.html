@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery.min.js"></script>
+    <title></title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: #CCC;
+        }
+
+        div {
+            width: 500px;
+            height: 60px;
+            margin: 40px auto;
+        }
+
+        .title li {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .red {
+            background-color: red;
+            border: 5px solid red;
+        }
+
+        .pink {
+            background-color: pink;
+            border: 5px solid pink;
+        }
+
+        .green {
+            background-color: green;
+            border: 5px solid green;
+        }
+
+        .current {
+
+            background-color: #fff;
+        }
+
+        .content {
+            height: 30px;
+            margin-top: 10px;
+            border: 1px solid #fff;
+            background-color: red;
+            overflow: hidden;
+        }
+
+        .content li {
+            float: left;
+            text-align: center;
+            padding: 0px 25px;
+            line-height: 30px;
+            color: #fff;
+            border-right: 1px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="title">
+            <li class="red current"></li>
+            <li class="pink"></li>
+            <li class="green"></li>
+        </ul>
+        <ul class="content">
+            <li>新闻</li>
+            <li>娱乐</li>
+            <li>体育</li>
+            <li>电影</li>
+            <li>音乐</li>
+            <li>旅游</li>
+        </ul>
+    </div>
+    <script>
+        $(".title li").click(function () {
+            var color = $(this).css("backgroundColor");
+            $(this).addClass("current").siblings().removeClass("current");
+            $(".content").css("backgroundColor", color)
+        })
+    </script>
+</body>
+
+</html>
